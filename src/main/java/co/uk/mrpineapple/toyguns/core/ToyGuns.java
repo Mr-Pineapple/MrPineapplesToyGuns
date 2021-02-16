@@ -1,5 +1,6 @@
 package co.uk.mrpineapple.toyguns.core;
 
+import co.uk.mrpineapple.toyguns.core.registry.ItemRegistry;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -39,6 +40,8 @@ public class ToyGuns {
     public ToyGuns() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.register(this);
+        //Register the Deferred Register from our ItemRegistry class
+        ItemRegistry.ITEM_REGISTRY.register(bus);
     }
 
 }
