@@ -1,11 +1,19 @@
 package co.uk.mrpineapple.toyguns.core;
 
+import co.uk.mrpineapple.toyguns.client.render.entity.DartEntityRenderer;
+import co.uk.mrpineapple.toyguns.common.entity.DartEntity;
+import co.uk.mrpineapple.toyguns.core.registry.EntityRegistry;
 import co.uk.mrpineapple.toyguns.core.registry.ItemRegistry;
+import com.mrcrayfish.guns.common.ProjectileManager;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 /*
@@ -40,8 +48,25 @@ public class ToyGuns {
     public ToyGuns() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.register(this);
-        //Register the Deferred Register from our ItemRegistry class
+        //Register the Deferred Register from our Registry classes
+        EntityRegistry.ENTITY_REGISTRY.register(bus);
         ItemRegistry.ITEM_REGISTRY.register(bus);
+        //Call the setup methods from below and add them to the bus
+        bus.addListener(this::commonSetup);
+        bus.addListener(this::clientSetup);
     }
+
+    //This is the common setup event
+    void commonSetup(FMLCommonSetupEvent event) {
+        //Here is where we register the dart to the gun
+        ProjectileManager.getInstance().registerFactory(ItemRegistry.DART.get(), ((world, livingEntity, itemStack, gunItem, gun) -> new DartEntity(EntityRegistry.DART.get(), world, livingEntity, itemStack, gunItem, gun)));
+    }
+
+    //This is the client setup event
+    void clientSetup(FMLClientSetupEvent event) {
+        //Here we bind the renderer class to the entity - so it knows what to render for the entity.
+        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.DART.get(), DartEntityRenderer::new);
+    }
+
 
 }
