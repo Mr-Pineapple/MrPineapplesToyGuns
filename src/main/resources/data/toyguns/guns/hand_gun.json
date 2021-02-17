@@ -17,10 +17,10 @@
     "gravity": true
   },
   "sounds": {
-    "fire": "cgm:item.pistol.fire",
-    "reload": "cgm:item.pistol.reload",
-    "cock": "cgm:item.pistol.cock",
-    "silencedFire": "cgm:item.pistol.silenced_fire"
+    "fire": "toyguns:item.toy_gun.fire",
+    "reload": "toyguns:item.toy_gun.reload",
+    "cock": "toyguns:item.toy_gun.reload",
+    "silencedFire": "toyguns:item.toy_gun.fire"
   },
   "modules": {
     "zoom": {

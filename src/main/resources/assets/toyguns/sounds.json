@@ -1,0 +1,14 @@
+{
+  "item.toy_gun.fire": {
+    "subtitle": "subtitle.toyguns.toy_fire",
+    "sounds": [
+      { "name": "toyguns:item/toy_fire" }
+    ]
+  },
+  "item.toy_gun.reload": {
+    "subtitle": "subtitle.toyguns.toy_reload",
+    "sounds": [
+      { "name": "toyguns:item/toy_reload" }
+    ]
+  }
+}

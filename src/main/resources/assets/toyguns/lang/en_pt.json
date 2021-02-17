@@ -1,5 +1,8 @@
 {
   "item.toyguns.hand_gun": "Shooter O' Rubber",
   "item.toyguns.dart": "Wooly Bullet",
-  "itemGroup.toyguns": "Toy Gun Arrr'senal"
+  "itemGroup.toyguns": "Toy Gun Arrr'senal",
+
+  "subtitle.toyguns.toy_fire": "Toy Shootin'",
+  "subtitle.toyguns.toy_reload": "Reload O' Toy"
 }

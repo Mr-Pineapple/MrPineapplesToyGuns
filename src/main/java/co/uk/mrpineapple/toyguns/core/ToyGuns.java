@@ -4,6 +4,7 @@ import co.uk.mrpineapple.toyguns.client.render.entity.DartEntityRenderer;
 import co.uk.mrpineapple.toyguns.common.entity.DartEntity;
 import co.uk.mrpineapple.toyguns.core.registry.EntityRegistry;
 import co.uk.mrpineapple.toyguns.core.registry.ItemRegistry;
+import co.uk.mrpineapple.toyguns.core.registry.SoundRegistry;
 import com.mrcrayfish.guns.common.ProjectileManager;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -54,6 +55,7 @@ public class ToyGuns {
         //Register the Deferred Register from our Registry classes
         EntityRegistry.ENTITY_REGISTRY.register(bus);
         ItemRegistry.ITEM_REGISTRY.register(bus);
+        SoundRegistry.SOUND_REGISTRY.register(bus);
         //Call the setup methods from below and add them to the bus
         bus.addListener(this::commonSetup);
         bus.addListener(this::clientSetup);
