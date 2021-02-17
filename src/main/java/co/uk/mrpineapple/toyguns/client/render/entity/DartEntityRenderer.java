@@ -14,6 +14,8 @@ import net.minecraft.util.math.vector.Vector3f;
 /*
  * This is our render class for our projectile entity.
  * We need to extend the EntityRenderer and implement the entity we want to render - in this case it's our DartEntity
+ * You should only ever have this if you are wanting to render the projectile after it has been shot.
+ * Otherwise it will be a waste.
  */
 
 /**
@@ -56,6 +58,9 @@ public class DartEntityRenderer extends EntityRenderer<DartEntity> {
          * In the case of my Food Mod, when I am rendering things into the pizza oven
          * or the pizza box, I have a lot more in this method as I have a few checks
          * and more things are being rendered.
+         * Any mod that dynamically has things rendered will most likely (or should at least)
+         * be using a TileEntityRenderer which, in turn they will use code similar to this.
+         * For examples you can view vanilla classes such as CampfireTileEntityRenderer.
          */
         matrices.push();
         matrices.rotate(Vector3f.YP.rotationDegrees(180F));
