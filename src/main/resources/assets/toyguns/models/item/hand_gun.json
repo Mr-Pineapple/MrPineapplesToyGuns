@@ -2,8 +2,8 @@
 	"credit": "Model Created by Mr. Pineapple (https://twitter.com/MrPineappleDev - https://discord.gg/mNWSEB5) - using Blockbench",
 	"textures": {
 		"1": "block/anvil",
-		"3": "block/white_concrete",
-		"4": "block/orange_concrete",
+		"3": "block/white_wool",
+		"4": "block/orange_wool",
 		"5": "block/blue_concrete",
 		"6": "toyguns:items/toy_gun_extras",
 		"particle": "block/blue_concrete"
@@ -117,7 +117,7 @@
 		},
 		{
 			"from": [7.925, 3.95, 8.55],
-			"to": [8.075, 4.15, 8.825],
+			"to": [8.075, 4.2, 8.825],
 			"rotation": {"angle": 0, "axis": "y", "origin": [15.625, 11.95, 17.05]},
 			"faces": {
 				"north": {"uv": [0, 0, 0.15, 0.2], "texture": "#1", "cullface": "north"},
@@ -300,7 +300,7 @@
 			"to": [8.35, 3, 9.325],
 			"rotation": {"angle": 0, "axis": "y", "origin": [15.5, 9.65, 16.825]},
 			"faces": {
-				"north": {"uv": [0, 0, 0.7, 0.7], "texture": "#4", "cullface": "north"},
+				"north": {"uv": [3, 0, 4, 1], "texture": "#4", "cullface": "north"},
 				"east": {"uv": [0, 0, 2.75, 0.7], "texture": "#4", "cullface": "east"},
 				"south": {"uv": [0, 0, 0.7, 0.7], "texture": "#4"},
 				"west": {"uv": [0, 0, 2.75, 0.7], "texture": "#4"},
