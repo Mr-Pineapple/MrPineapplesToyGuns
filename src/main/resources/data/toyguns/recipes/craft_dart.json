@@ -1,0 +1,17 @@
+{
+  "type": "cgm:workbench",
+  "result": {
+    "item": "toyguns:dart",
+    "count": 32
+  },
+  "materials": [
+    {
+      "item": "minecraft:blue_wool",
+      "count": 8
+    },
+    {
+      "item": "minecraft:orange_wool",
+      "count": 4
+    }
+  ]
+}
