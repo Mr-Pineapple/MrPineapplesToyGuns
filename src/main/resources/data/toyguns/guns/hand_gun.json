@@ -4,7 +4,7 @@
     "rate": 2,
     "gripType": "cgm:one_handed",
     "maxAmmo": 12,
-    "reloadAmount": 5,
+    "reloadAmount": 3,
     "recoilAngle": 0.25
   },
   "projectile": {
