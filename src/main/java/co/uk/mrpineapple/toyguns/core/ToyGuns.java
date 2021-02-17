@@ -31,7 +31,7 @@ public class ToyGuns {
     /*
      * This is our creative tab that we will add our items to.
      * If you wanted, you could just add them to the Gun Mods tab.
-     * We pass in our ID to this so we can name it in the assets.
+     * We pass in our ID to this so we can name it in the lang file.
      */
     public static final ItemGroup GROUP = new ItemGroup(ID) {
         //Here we create the icon for the tab
@@ -39,7 +39,11 @@ public class ToyGuns {
         @Override
         public ItemStack createIcon() {
             //Get the Item in a new ItemStack
-            return new ItemStack(Items.APPLE);
+            ItemStack stack = new ItemStack(ItemRegistry.TOY_GUN.get());
+            //Here we add ammunition to the gun so it doesn't have the re-fill bar under the item
+            stack.getOrCreateTag().putInt("AmmoCount", ItemRegistry.TOY_GUN.get().getGun().getGeneral().getMaxAmmo());
+            //We now return the stack which has added ammunition
+            return stack;
         }
     };
 
