@@ -1,6 +1,7 @@
 ![Toy Guns Banner](https://i.imgur.com/jGUjiBR.gif)
 
-[![Requires Gun Mod](https://cutt.ly/Gk4WHPI)](https://www.curseforge.com/minecraft/mc-mods/mrcrayfishs-gun-mod)
+[![Download](https://img.shields.io/static/v1?label=&message=download%20here&color=2d2d2d&labelColor=orange&style=for-the-badge)](https://www.curseforge.com/minecraft/mc-mods/mrcrayfishs-gun-mod)
+[![Requires Gun Mod](https://cutt.ly/Gk4WHPI)](https://www.curseforge.com/minecraft/mc-mods/mr-pineapples-toy-guns)
 [![Requires Obfuscate](https://cutt.ly/9k4WOXZ)](https://www.curseforge.com/minecraft/mc-mods/obfuscate)
 [![YouTube](https://img.shields.io/static/v1?label=&message=YouTube&color=2d2d2d&labelColor=blue&style=for-the-badge&logo=YouTube&logoColor=white)](https://www.youtube.com/c/MrPineappleDev)
 [![Discord](https://img.shields.io/static/v1?label=&message=Discord&color=2d2d2d&labelColor=blue&style=for-the-badge&logo=Discord&logoColor=white)](https://discord.gg/mNWSEB5)
