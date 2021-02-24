@@ -1,5 +1,6 @@
 package co.uk.mrpineapple.toyguns.common.entity;
 
+import co.uk.mrpineapple.toyguns.core.Config;
 import co.uk.mrpineapple.toyguns.core.registry.ItemRegistry;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.entity.ProjectileEntity;
@@ -60,8 +61,12 @@ public class DartEntity extends ProjectileEntity {
      * This is our method, because it is being called whenever the bullet hits something, I can then apply some logic to it.
      * In this case, I get the world and add an entity - a new instance of the dart. This means the player can pick up the darts
      * and re-use them in their guns.
+     * I am getting a value from my config file, and then checking if it is greater or equal to 1. If it is then we spawn the dart.
+     * If it is equal to 0, then the dart will not spawn as an item, for a true nerf experience :P
      */
     void onHit(double x, double y, double z) {
-        world.addEntity(new ItemEntity(world, x, y, z, new ItemStack(ItemRegistry.DART.get())));
+        if(rand.nextInt(Config.COMMON.dartLossChance.get() - 1) >= 1) {
+            world.addEntity(new ItemEntity(world, x, y, z, new ItemStack(ItemRegistry.DART.get())));
+        }
     }
 }
