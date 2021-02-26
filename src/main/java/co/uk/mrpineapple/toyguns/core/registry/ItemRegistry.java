@@ -32,6 +32,12 @@ public class ItemRegistry {
     public static final RegistryObject<GunItem> TOY_GUN = ITEM_REGISTRY.register("hand_gun", () -> new GunItem(new Item.Properties().maxStackSize(1).group(ToyGuns.GROUP)));
 
     /*
+     * This is the toy revolver, it is the same as above, as it is a gun. Even though we override the model,
+     * we still need to register it in the same way.
+     */
+    public static final RegistryObject<GunItem> TOY_REVOLVER = ITEM_REGISTRY.register("revolver", () -> new GunItem(new Item.Properties().maxStackSize(1).group(ToyGuns.GROUP)));
+
+    /*
      * You don't need to add new ammunition as you can use the existing ones in the mod by adding them to the gun's JSON file
      * However, for my mod, I want to create my own dart.
      */

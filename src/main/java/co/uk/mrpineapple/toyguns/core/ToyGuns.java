@@ -1,10 +1,12 @@
 package co.uk.mrpineapple.toyguns.core;
 
 import co.uk.mrpineapple.toyguns.client.render.entity.DartEntityRenderer;
+import co.uk.mrpineapple.toyguns.client.render.gun.model.ToyRevolverModel;
 import co.uk.mrpineapple.toyguns.common.entity.DartEntity;
 import co.uk.mrpineapple.toyguns.core.registry.EntityRegistry;
 import co.uk.mrpineapple.toyguns.core.registry.ItemRegistry;
 import co.uk.mrpineapple.toyguns.core.registry.SoundRegistry;
+import com.mrcrayfish.guns.client.render.gun.ModelOverrides;
 import com.mrcrayfish.guns.common.ProjectileManager;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -75,7 +77,7 @@ public class ToyGuns {
     void clientSetup(FMLClientSetupEvent event) {
         //Here we bind the renderer class to the entity - so it knows what to render for the entity.
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.DART.get(), DartEntityRenderer::new);
+        //Register the revolver model
+        ModelOverrides.register(ItemRegistry.TOY_REVOLVER.get(), new ToyRevolverModel());
     }
-
-
 }
