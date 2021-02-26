@@ -29,7 +29,7 @@ public class ToyRevolverModel implements IOverrideModel {
         RenderUtil.renderModel(SpecialModels.REVOLVER.getModel(), stack, matrices, renderBuffer, light, overlay);
 
         //Make sure the player has it
-        if(entity.equals(Minecraft.getInstance().player)) {
+//        if(entity.equals(Minecraft.getInstance().player)) {
             //Always push
             matrices.push();
             //Here we're moving the model into position
@@ -49,7 +49,7 @@ public class ToyRevolverModel implements IOverrideModel {
             RenderUtil.renderModel(SpecialModels.REVOLVER_CHAMBER.getModel(), stack, matrices, renderBuffer, light, overlay);
             //Always pop
             matrices.pop();
-        }
+//        }
     }
 
     //Same method from GrenadeLauncherModel, to make a smooth rotation of the chamber.
