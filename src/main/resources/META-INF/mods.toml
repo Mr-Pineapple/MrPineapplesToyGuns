@@ -53,3 +53,9 @@ description='Mr. Pineapples Toy Gun Addon introduces toy guns to MrCrayfishs Gun
     versionRange="[0.10.3,)"
     ordering="AFTER"
     side="CLIENT"
+[[dependencies.toyguns]]
+    modId="configured"
+    mandatory=false
+    versionRange="[0.2.0,)"
+    ordering="AFTER"
+    side="BOTH"

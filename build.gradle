@@ -76,6 +76,7 @@ dependencies {
     compile fg.deobf('curse.maven:obfuscate-289380:3169370')
     compile fg.deobf('curse.maven:controllable-317269:3196545')
 	compile fg.deobf('curse.maven:mrcrayfishs-gun-mod-289479:3203497')
+    compile fg.deobf('curse.maven:configured-457570:3244520')
 }
 
 jar {

@@ -10,7 +10,6 @@ import com.mrcrayfish.guns.client.render.gun.ModelOverrides;
 import com.mrcrayfish.guns.common.ProjectileManager;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;

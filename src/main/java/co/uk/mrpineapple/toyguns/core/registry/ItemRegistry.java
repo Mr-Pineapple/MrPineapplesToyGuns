@@ -1,5 +1,6 @@
 package co.uk.mrpineapple.toyguns.core.registry;
 
+import co.uk.mrpineapple.toyguns.common.items.NerfGun;
 import co.uk.mrpineapple.toyguns.core.ToyGuns;
 import com.mrcrayfish.guns.item.AmmoItem;
 import com.mrcrayfish.guns.item.GunItem;
@@ -23,19 +24,21 @@ public class ItemRegistry {
     public static final DeferredRegister<Item> ITEM_REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, ToyGuns.ID);
 
     /*
-     * Register a new GunItem into the Deferred Register above.
+     * Register a new instance of GunItem into the Deferred Register above.
      * We can just create a new instance of the Gun Item as the API allows us to edit the properties in the JSON data file.
      * In that JSON we can add and remove fields to suit our needs, take a look at the existing guns if you would like to see them
      *      https://github.com/MrCrayfish/MrCrayfishGunMod/tree/1.16.X/src/main/resources/data/cgm/guns
      * I would say, if you wanted to add something to this then make sure you know what you're doing :P
+     *
+     * I am using NerfGun as a class here, you can just use GunItem, as I am doing something for all of my nerf guns.
      */
-    public static final RegistryObject<GunItem> TOY_GUN = ITEM_REGISTRY.register("hand_gun", () -> new GunItem(new Item.Properties().maxStackSize(1).group(ToyGuns.GROUP)));
+    public static final RegistryObject<GunItem> TOY_GUN = ITEM_REGISTRY.register("hand_gun", NerfGun::new);
 
     /*
      * This is the toy revolver, it is the same as above, as it is a gun. Even though we override the model,
      * we still need to register it in the same way.
      */
-    public static final RegistryObject<GunItem> TOY_REVOLVER = ITEM_REGISTRY.register("revolver", () -> new GunItem(new Item.Properties().maxStackSize(1).group(ToyGuns.GROUP)));
+    public static final RegistryObject<GunItem> TOY_REVOLVER = ITEM_REGISTRY.register("revolver", NerfGun::new);
 
     /*
      * You don't need to add new ammunition as you can use the existing ones in the mod by adding them to the gun's JSON file
