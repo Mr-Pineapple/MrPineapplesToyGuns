@@ -2,6 +2,7 @@
 modLoader="javafml"
 loaderVersion="[32,)"
 license="GPL3"
+issueTrackerURL="https://github.com/Mr-Pineapple/MrPineapplesToyGuns/issues"
 
 #Our Mod Info
 [[mods]]
@@ -9,7 +10,6 @@ modId="toyguns"
 version="0.2"
 displayName="Mr Pineapple's Toy Gun Mod Addon"
 updateJSONURL="https://raw.githubusercontent.com/Mr-Pineapple/ModUpdateJSON/master/toyguns/update.json"
-issueTrackerURL="https://github.com/Mr-Pineapple/MrPineapplesToyGuns/issues"
 displayURL="https://mr-pineapple.co.uk/"
 authors="Mr. Pineapple"
 credits="MrCrayfish"
