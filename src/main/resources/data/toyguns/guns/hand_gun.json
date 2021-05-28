@@ -1,9 +1,9 @@
 {
   "general": {
     "auto": true,
-    "rate": 4,
+    "rate": 3,
     "gripType": "cgm:one_handed",
-    "maxAmmo": 12,
+    "maxAmmo": 18,
     "reloadAmount": 3,
     "recoilAngle": 0.25
   },
@@ -34,13 +34,9 @@
         "scale": 0.75
       },
       "barrel": {
-        "yOffset": 2.6,
-        "zOffset": -1.2,
-        "scale": 0.5
-      },
-      "stock": {
-        "yOffset": 3,
-        "zOffset": 7.2
+        "yOffset": 2.9,
+        "zOffset": 0.25,
+        "scale": 0.4
       }
     }
   }
