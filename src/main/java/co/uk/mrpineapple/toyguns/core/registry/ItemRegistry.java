@@ -33,6 +33,7 @@ public class ItemRegistry {
      * I am using NerfGun as a class here, you can just use GunItem, as I am doing something for all of my nerf guns.
      */
     public static final RegistryObject<GunItem> TOY_GUN = ITEM_REGISTRY.register("hand_gun", NerfGun::new);
+    public static final RegistryObject<GunItem> DEFENDER = ITEM_REGISTRY.register("defender", NerfGun::new);
 
     /*
      * This is the toy revolver, it is the same as above, as it is a gun. Even though we override the model,
