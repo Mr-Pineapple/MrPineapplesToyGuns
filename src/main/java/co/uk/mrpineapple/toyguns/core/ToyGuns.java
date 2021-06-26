@@ -1,5 +1,6 @@
 package co.uk.mrpineapple.toyguns.core;
 
+import co.uk.mrpineapple.toyguns.client.KeyBinds;
 import co.uk.mrpineapple.toyguns.client.render.entity.DartEntityRenderer;
 import co.uk.mrpineapple.toyguns.client.render.gun.model.ToyRevolverModel;
 import co.uk.mrpineapple.toyguns.common.entity.DartEntity;
@@ -78,5 +79,7 @@ public class ToyGuns {
         RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.DART.get(), DartEntityRenderer::new);
         //Register the revolver model
         ModelOverrides.register(ItemRegistry.TOY_REVOLVER.get(), new ToyRevolverModel());
+        //Register our Keybinds
+        KeyBinds.register();
     }
 }
