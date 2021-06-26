@@ -5,6 +5,9 @@ import net.minecraftforge.fml.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
+/**
+ * Author: Mr. Pineapple
+ */
 public interface Message {
     void encode(PacketBuffer buffer);
     void decode(PacketBuffer buffer);

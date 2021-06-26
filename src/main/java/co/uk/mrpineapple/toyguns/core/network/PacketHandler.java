@@ -2,7 +2,7 @@ package co.uk.mrpineapple.toyguns.core.network;
 
 import co.uk.mrpineapple.toyguns.core.ToyGuns;
 import co.uk.mrpineapple.toyguns.core.network.message.Message;
-import com.mrcrayfish.guns.network.message.MessageCraft;
+import co.uk.mrpineapple.toyguns.core.network.message.UnjamMessage;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.network.NetworkRegistry;
@@ -10,6 +10,9 @@ import net.minecraftforge.fml.network.simple.SimpleChannel;
 
 import java.util.function.Supplier;
 
+/**
+ * Author: Mr. Pineapple
+ */
 public class PacketHandler {
     public static final String PROTOCOL_VERSION = "1";
     private static SimpleChannel handshakeChannel;
@@ -23,6 +26,8 @@ public class PacketHandler {
                 .clientAcceptedVersions(PROTOCOL_VERSION::equals)
                 .serverAcceptedVersions(PROTOCOL_VERSION::equals)
                 .simpleChannel();
+
+        registerPlay(UnjamMessage.class, UnjamMessage::new, LogicalSide.SERVER);
     }
 
     /**
