@@ -28,7 +28,6 @@ public class ShootingEvent {
             return;
         int rand = new Random().nextInt(10);
         if(rand == 3) {
-//            ((NerfGun) event.getStack().getItem()).setJammed(true);
             event.getStack().getTag().putBoolean("isJammed", true);
             event.setCanceled(true);
         }
