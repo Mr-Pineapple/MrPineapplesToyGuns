@@ -8,5 +8,5 @@
   "subtitle.toyguns.toy_fire": "Toy Gun Fire",
   "subtitle.toyguns.toy_reload": "Toy Gun Reload",
 
-  "info.toygunsgun_jammed": "Press %s in-game to un-jam "
+  "info.toyguns.gun_jammed": "Press %s in-game to un-jam "
 }

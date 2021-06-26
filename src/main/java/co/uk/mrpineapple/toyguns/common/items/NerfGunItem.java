@@ -31,7 +31,7 @@ public class NerfGunItem extends GunItem {
         //Check if the gun is jammed from the isJammed NBT property
         if(stack.getTag().getBoolean("isJammed")) {
             //Add a tooltip on how to unjam the gun from the keybind
-            tooltip.add(new TranslationTextComponent("info." + ToyGuns.ID + "gun_jammed", (new KeybindTextComponent("key." + ToyGuns.ID + ".unjam_gun")).getString().toUpperCase(Locale.ENGLISH)).mergeStyle(TextFormatting.RED));
+            tooltip.add(new TranslationTextComponent("info." + ToyGuns.ID + ".gun_jammed", (new KeybindTextComponent("key." + ToyGuns.ID + ".unjam_gun")).getString().toUpperCase(Locale.ENGLISH)).mergeStyle(TextFormatting.RED));
         }
     }
 }
