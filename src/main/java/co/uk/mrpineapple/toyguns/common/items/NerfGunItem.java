@@ -26,8 +26,11 @@ public class NerfGunItem extends GunItem {
 
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flag) {
+        //Add everything from the extended GunItem class
         super.addInformation(stack, worldIn, tooltip, flag);
+        //Check if the gun is jammed from the isJammed NBT property
         if(stack.getTag().getBoolean("isJammed")) {
+            //Add a tooltip on how to unjam the gun from the keybind
             tooltip.add(new TranslationTextComponent("info." + ToyGuns.ID + "gun_jammed", (new KeybindTextComponent("key." + ToyGuns.ID + ".unjam_gun")).getString().toUpperCase(Locale.ENGLISH)).mergeStyle(TextFormatting.RED));
         }
     }
