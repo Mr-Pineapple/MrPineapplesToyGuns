@@ -4,10 +4,13 @@ import co.uk.mrpineapple.toyguns.common.items.NerfGunItem;
 import co.uk.mrpineapple.toyguns.core.ToyGuns;
 import co.uk.mrpineapple.toyguns.core.registry.SoundRegistry;
 import com.mrcrayfish.guns.event.GunFireEvent.Pre;
+import net.minecraft.util.text.KeybindTextComponent;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import java.util.Locale;
 import java.util.Random;
 
 /**
@@ -43,6 +46,8 @@ public class ShootingEvent {
             event.getPlayer().playSound(SoundRegistry.ITEM_TOY_GUN_RELOAD.get(), 1F, 1F);
             //Set cooldown tracker for the stack
             event.getPlayer().getCooldownTracker().setCooldown(event.getStack().getItem(), 60);
+            //Inform the player
+            event.getPlayer().sendStatusMessage(new TranslationTextComponent("info." + ToyGuns.ID + ".gun_jammed", (new KeybindTextComponent("key." + ToyGuns.ID + ".unjam_gun")).getString().toUpperCase(Locale.ENGLISH)).mergeStyle(TextFormatting.RED), true);
             //Cancel the event, ultimately, not firing the gun
             event.setCanceled(true);
         }
