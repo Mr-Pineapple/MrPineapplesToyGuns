@@ -25,17 +25,29 @@ public class ShootingEvent {
      */
     @SubscribeEvent
     public static void preShoot(Pre event) {
+        //Make sure we are only doing this to nerf guns
         if(!(event.getStack().getItem() instanceof NerfGunItem))
             return;
+        //To promote to config
         int rand = new Random().nextInt(10);
         if(rand == 3) {
+            /*
+               Add NBT data to the ItemStack
+               isJammed - for checking if a gun is jammed
+               originalName - used to revert display name back to what it was, mainly used to support items that have been renamed in an anvil
+             */
             event.getStack().getTag().putBoolean("isJammed", true);
             event.getStack().getTag().putString("originalName", event.getStack().getDisplayName().getString());
+            //Append Jammed to the display name, for players to see in the hotbar
             event.getStack().setDisplayName(new TranslationTextComponent(event.getStack().getDisplayName().getString() + " - Jammed"));
         }
+        //Check if the gun is jammed from the NBT data
         if(event.getStack().getTag().getBoolean("isJammed")) {
+            //Play sound
             event.getPlayer().playSound(SoundRegistry.ITEM_TOY_GUN_RELOAD.get(), 1F, 1F);
+            //Set cooldown tracker for the stack
             event.getPlayer().getCooldownTracker().setCooldown(event.getStack().getItem(), 60);
+            //Cancel the event, ultimately, not firing the gun
             event.setCanceled(true);
         }
     }
