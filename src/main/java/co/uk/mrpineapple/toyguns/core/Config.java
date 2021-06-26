@@ -22,6 +22,9 @@ public class Config {
     public static class Common {
         //Initialise our value
         public final ForgeConfigSpec.IntValue dartLossChance;
+        public final ForgeConfigSpec.BooleanValue gunJams;
+        public final ForgeConfigSpec.IntValue dartJamChance;
+        public final ForgeConfigSpec.BooleanValue showJamStatusMessage;
 
         //Constructor for the Common Config
         Common(ForgeConfigSpec.Builder builder) {
@@ -34,6 +37,10 @@ public class Config {
                  * This takes in the path (what it will be called). The default value. The minimum value. Then the max value.
                  */
                 this.dartLossChance = builder.comment("The chance of a dart being lost when shot is 1/this number").defineInRange("dartLossMinimum", 20, 0, Integer.MAX_VALUE);
+                this.gunJams = builder.comment("Should Toy Guns jam? if set to false the below chance will be ignored").define("enableGunJamming", true);
+                this.dartJamChance = builder.comment("The chance of a dart being lost is 1/this number").defineInRange("dartJamMinimum", 50, 0, Integer.MAX_VALUE);
+                this.showJamStatusMessage = builder.comment("Show a status message when a gun jams").define("showGunJamStatusMessage", true);
+
             }
             //Remember to pop this section
             builder.pop();
