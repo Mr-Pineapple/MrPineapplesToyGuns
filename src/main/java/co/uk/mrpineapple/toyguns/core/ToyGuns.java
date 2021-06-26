@@ -4,6 +4,7 @@ import co.uk.mrpineapple.toyguns.client.KeyBinds;
 import co.uk.mrpineapple.toyguns.client.render.entity.DartEntityRenderer;
 import co.uk.mrpineapple.toyguns.client.render.gun.model.ToyRevolverModel;
 import co.uk.mrpineapple.toyguns.common.entity.DartEntity;
+import co.uk.mrpineapple.toyguns.core.network.PacketHandler;
 import co.uk.mrpineapple.toyguns.core.registry.EntityRegistry;
 import co.uk.mrpineapple.toyguns.core.registry.ItemRegistry;
 import co.uk.mrpineapple.toyguns.core.registry.SoundRegistry;
@@ -69,6 +70,8 @@ public class ToyGuns {
 
     //This is the common setup event
     void commonSetup(FMLCommonSetupEvent event) {
+        //Register our PacketHandler class here
+        PacketHandler.init();
         //Here is where we register the dart to the gun
         ProjectileManager.getInstance().registerFactory(ItemRegistry.DART.get(), ((world, livingEntity, itemStack, gunItem, gun) -> new DartEntity(EntityRegistry.DART.get(), world, livingEntity, itemStack, gunItem, gun)));
     }
