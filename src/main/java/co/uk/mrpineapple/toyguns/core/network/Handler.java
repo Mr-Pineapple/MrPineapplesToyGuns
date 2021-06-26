@@ -6,6 +6,9 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundCategory;
 
+/**
+ * Author: Mr. Pineapple
+ */
 public class Handler {
     /**
      *
