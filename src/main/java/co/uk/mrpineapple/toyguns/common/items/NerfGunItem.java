@@ -23,4 +23,12 @@ public class NerfGunItem extends GunItem {
     public NerfGunItem() {
         super(new Item.Properties().maxStackSize(1).group(ToyGuns.GROUP));
     }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flag) {
+        super.addInformation(stack, worldIn, tooltip, flag);
+        if(stack.getTag().getBoolean("isJammed")) {
+            tooltip.add(new TranslationTextComponent("info." + ToyGuns.ID + "gun_jammed", (new KeybindTextComponent("key." + ToyGuns.ID + ".unjam_gun")).getString().toUpperCase(Locale.ENGLISH)).mergeStyle(TextFormatting.RED));
+        }
+    }
 }

@@ -6,5 +6,7 @@
   "itemGroup.toyguns": "Mr. Pineapple's Toy Guns",
 
   "subtitle.toyguns.toy_fire": "Toy Gun Fire",
-  "subtitle.toyguns.toy_reload": "Toy Gun Reload"
+  "subtitle.toyguns.toy_reload": "Toy Gun Reload",
+
+  "info.toygunsgun_jammed": "Press %s in-game to un-jam "
 }

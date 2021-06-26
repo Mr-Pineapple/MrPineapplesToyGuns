@@ -1,9 +1,10 @@
 package co.uk.mrpineapple.toyguns.core.events;
 
-import co.uk.mrpineapple.toyguns.common.items.NerfGun;
+import co.uk.mrpineapple.toyguns.common.items.NerfGunItem;
 import co.uk.mrpineapple.toyguns.core.ToyGuns;
 import co.uk.mrpineapple.toyguns.core.registry.SoundRegistry;
 import com.mrcrayfish.guns.event.GunFireEvent.Pre;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -24,11 +25,12 @@ public class ShootingEvent {
      */
     @SubscribeEvent
     public static void preShoot(Pre event) {
-        if(!(event.getStack().getItem() instanceof NerfGun))
+        if(!(event.getStack().getItem() instanceof NerfGunItem))
             return;
         int rand = new Random().nextInt(10);
         if(rand == 3) {
             event.getStack().getTag().putBoolean("isJammed", true);
+            event.getStack().setDisplayName(new TranslationTextComponent(event.getStack().getDisplayName().getString() + " - Jammed"));
             event.setCanceled(true);
         }
         if(event.getStack().getTag().getBoolean("isJammed")) {
