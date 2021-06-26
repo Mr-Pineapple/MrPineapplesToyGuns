@@ -32,7 +32,6 @@ public class ShootingEvent {
             event.getStack().getTag().putBoolean("isJammed", true);
             event.getStack().getTag().putString("originalName", event.getStack().getDisplayName().getString());
             event.getStack().setDisplayName(new TranslationTextComponent(event.getStack().getDisplayName().getString() + " - Jammed"));
-            event.setCanceled(true);
         }
         if(event.getStack().getTag().getBoolean("isJammed")) {
             event.getPlayer().playSound(SoundRegistry.ITEM_TOY_GUN_RELOAD.get(), 1F, 1F);
