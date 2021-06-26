@@ -30,6 +30,7 @@ public class ShootingEvent {
         int rand = new Random().nextInt(10);
         if(rand == 3) {
             event.getStack().getTag().putBoolean("isJammed", true);
+            event.getStack().getTag().putString("originalName", event.getStack().getDisplayName().getString());
             event.getStack().setDisplayName(new TranslationTextComponent(event.getStack().getDisplayName().getString() + " - Jammed"));
             event.setCanceled(true);
         }
