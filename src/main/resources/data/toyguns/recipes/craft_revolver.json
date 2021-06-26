@@ -1,0 +1,20 @@
+{
+  "type": "cgm:workbench",
+  "result": {
+    "item": "toyguns:revolver"
+  },
+  "materials": [
+    {
+      "item": "minecraft:iron_ingot",
+      "count": 15
+    },
+    {
+      "item": "minecraft:iron_nugget",
+      "count": 6
+    },
+    {
+      "item": "minecraft:blue_dye",
+      "count": 1
+    }
+  ]
+}
