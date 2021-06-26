@@ -29,27 +29,28 @@ public class ToyRevolverModel implements IOverrideModel {
         RenderUtil.renderModel(SpecialModels.REVOLVER.getModel(), stack, matrices, renderBuffer, light, overlay);
 
         //Make sure the player has it
-//        if(entity.equals(Minecraft.getInstance().player)) {
-            //Always push
-            matrices.push();
-            //Here we're moving the model into position
-            matrices.translate(0, -4.8 * 0.0625, 0);
+        //Always push
+        matrices.push();
+        //Here we're moving the model into position
+        matrices.translate(0, -4.8 * 0.0625, 0);
 
-            //We're getting the cooldown tracker for the item - items like the sword, ender pearl, and chorus fruit all have this too.
-            CooldownTracker tracker = Minecraft.getInstance().player.getCooldownTracker();
-            float cooldown = tracker.getCooldown(stack.getItem(), Minecraft.getInstance().getRenderPartialTicks());
-            cooldown = (float)easeInOutBack(cooldown);
+        //We're getting the cooldown tracker for the item - items like the sword, ender pearl, and chorus fruit all have this too.
+        CooldownTracker tracker = Minecraft.getInstance().player.getCooldownTracker();
+        float cooldown = tracker.getCooldown(stack.getItem(), Minecraft.getInstance().getRenderPartialTicks());
+        cooldown = (float)easeInOutBack(cooldown);
 
+        //If the gun is jammed we do not want to rotate the chamber
+        if(!stack.getTag().getBoolean("isJammed")) {
             //We rotate the chamber part of the model according to the cooldown variable above, which is manipulated by the method provided below.
             matrices.rotate(Vector3f.ZN.rotationDegrees(45F * cooldown));
-            //Then move it
-            matrices.translate(0, 5.8 * 0.0625, 0);
+        }
+        //Move model into place
+        matrices.translate(0, 5.8 * 0.0625, 0);
 
-            //Render the chamber part of the gun
-            RenderUtil.renderModel(SpecialModels.REVOLVER_CHAMBER.getModel(), stack, matrices, renderBuffer, light, overlay);
-            //Always pop
-            matrices.pop();
-//        }
+        //Render the chamber part of the gun
+        RenderUtil.renderModel(SpecialModels.REVOLVER_CHAMBER.getModel(), stack, matrices, renderBuffer, light, overlay);
+        //Always pop
+        matrices.pop();
     }
 
     //Same method from GrenadeLauncherModel, to make a smooth rotation of the chamber.

@@ -9,18 +9,33 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.Random;
 
+/**
+ * This class will be used for all shooting events that I will utilise.
+ * The gun mod provides 3 events for firing guns check out {@link com.mrcrayfish.guns.event.GunFireEvent} for what they are
+ */
+
+/**
+ * Author: Mr. Pineapple
+ */
 @Mod.EventBusSubscriber(modid = ToyGuns.ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ShootingEvent {
+    /**
+     * @param event the event. In this case, the Pre shoot event {@link com.mrcrayfish.guns.event.GunFireEvent.Pre} which is fired when a player is about to shoot a bullet
+     */
     @SubscribeEvent
     public static void preShoot(Pre event) {
         if(!(event.getStack().getItem() instanceof NerfGun))
             return;
-        int rand = new Random().nextInt(5);
+        int rand = new Random().nextInt(10);
         if(rand == 3) {
-            event.getPlayer().playSound(SoundRegistry.ITEM_TOY_GUN_RELOAD.get(), 1F, 1F);
-            event.getPlayer().getCooldownTracker().setCooldown(event.getStack().getItem(), 20*5);
+//            ((NerfGun) event.getStack().getItem()).setJammed(true);
+            event.getStack().getTag().putBoolean("isJammed", true);
             event.setCanceled(true);
         }
-
+        if(event.getStack().getTag().getBoolean("isJammed")) {
+            event.getPlayer().playSound(SoundRegistry.ITEM_TOY_GUN_RELOAD.get(), 1F, 1F);
+            event.getPlayer().getCooldownTracker().setCooldown(event.getStack().getItem(), 60);
+            event.setCanceled(true);
+        }
     }
 }
