@@ -1,6 +1,6 @@
 package co.uk.mrpineapple.toyguns.core.registry;
 
-import co.uk.mrpineapple.toyguns.common.items.NerfGun;
+import co.uk.mrpineapple.toyguns.common.items.NerfGunItem;
 import co.uk.mrpineapple.toyguns.core.ToyGuns;
 import com.mrcrayfish.guns.item.AmmoItem;
 import com.mrcrayfish.guns.item.GunItem;
@@ -32,14 +32,14 @@ public class ItemRegistry {
      *
      * I am using NerfGun as a class here, you can just use GunItem, as I am doing something for all of my nerf guns.
      */
-    public static final RegistryObject<GunItem> TOY_GUN = ITEM_REGISTRY.register("hand_gun", NerfGun::new);
-    public static final RegistryObject<GunItem> DEFENDER = ITEM_REGISTRY.register("defender", NerfGun::new);
+    public static final RegistryObject<GunItem> TOY_GUN = ITEM_REGISTRY.register("hand_gun", NerfGunItem::new);
+    public static final RegistryObject<GunItem> DEFENDER = ITEM_REGISTRY.register("defender", NerfGunItem::new);
 
     /*
      * This is the toy revolver, it is the same as above, as it is a gun. Even though we override the model,
      * we still need to register it in the same way.
      */
-    public static final RegistryObject<GunItem> TOY_REVOLVER = ITEM_REGISTRY.register("revolver", NerfGun::new);
+    public static final RegistryObject<GunItem> TOY_REVOLVER = ITEM_REGISTRY.register("revolver", NerfGunItem::new);
 
     /*
      * You don't need to add new ammunition as you can use the existing ones in the mod by adding them to the gun's JSON file
