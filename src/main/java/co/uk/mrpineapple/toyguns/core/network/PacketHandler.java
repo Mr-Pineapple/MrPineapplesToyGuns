@@ -1,8 +1,8 @@
 package co.uk.mrpineapple.toyguns.core.network;
 
 import co.uk.mrpineapple.toyguns.core.ToyGuns;
-import co.uk.mrpineapple.toyguns.core.network.message.Message;
 import co.uk.mrpineapple.toyguns.core.network.message.UnjamMessage;
+import com.mrcrayfish.guns.network.message.IMessage;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.network.NetworkRegistry;
@@ -35,10 +35,10 @@ public class PacketHandler {
      *
      * @param clazz class of the message
      * @param side side the message should be handled
-     * @param <T> first param - to implement {@link Message}
+     * @param <T> first param - to implement {@link IMessage}
      */
-    private static <T extends Message> void registerPlay(Class<T> clazz, Supplier<T> messageSupplier, LogicalSide side) {
-        playChannel.registerMessage(nextMessageId++, clazz, Message::encode, buffer -> {
+    private static <T extends IMessage> void registerPlay(Class<T> clazz, Supplier<T> messageSupplier, LogicalSide side) {
+        playChannel.registerMessage(nextMessageId++, clazz, IMessage::encode, buffer -> {
             T t = messageSupplier.get();
             t.decode(buffer);
             return t;
