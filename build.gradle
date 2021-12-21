@@ -6,7 +6,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
     }
 }
@@ -14,14 +14,14 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 
-version = '0.2-1.16.4'
+version = '0.2-1.18.1'
 group = 'co.uk.mrpineapple'
 archivesBaseName = 'toyguns'
 
-sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 minecraft {
-    mappings channel: 'snapshot', version: '20201028-1.16.3'
+    mappings channel: 'official', version: '1.18.1'
 
     runs {
         client {
@@ -69,15 +69,26 @@ minecraft {
 
 repositories {
 	maven { url = "https://www.cursemaven.com" }
+    maven {
+        name "Progwml6 maven"
+        url "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
+        name "ModMaven"
+        url "https://modmaven.k-4u.nl"
+    }
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.4-35.1.4'
-    compile fg.deobf('curse.maven:obfuscate-289380:3295964')
-    compile fg.deobf('curse.maven:controllable-317269:3298267')
-    compile fg.deobf('curse.maven:mrcrayfishs-gun-mod-289479:3224957')
-    compile fg.deobf('curse.maven:configured-457570:3334897')
-    compile fg.deobf('curse.maven:catalogue-459701:3334740')
+    minecraft 'net.minecraftforge:forge:1.18.1-39.0.7'
+    implementation fg.deobf('curse.maven:framework-549225:3559396')
+    implementation fg.deobf('curse.maven:controllable-317269:3546297')
+    implementation fg.deobf('curse.maven:mrcrayfishs-gun-mod-289479:3562019')
+    implementation fg.deobf('curse.maven:configured-457570:3559398')
+    implementation fg.deobf('curse.maven:catalogue-459701:3559402')
+    compileOnly fg.deobf("mezz.jei:jei-1.18:9.0.0.40:api")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.18:9.0.0.40")
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
 jar {

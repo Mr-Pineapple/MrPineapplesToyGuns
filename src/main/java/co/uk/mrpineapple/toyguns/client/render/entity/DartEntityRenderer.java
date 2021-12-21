@@ -1,15 +1,15 @@
 package co.uk.mrpineapple.toyguns.client.render.entity;
 
 import co.uk.mrpineapple.toyguns.common.entity.DartEntity;
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Vector3f;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.IRenderTypeBuffer;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.entity.EntityRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererManager;
-import net.minecraft.client.renderer.model.ItemCameraTransforms;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.vector.Vector3f;
+import net.minecraft.resources.ResourceLocation;
 
 /*
  * This is our render class for our projectile entity.
@@ -23,13 +23,13 @@ import net.minecraft.util.math.vector.Vector3f;
  */
 public class DartEntityRenderer extends EntityRenderer<DartEntity> {
     //Generic constructor
-    public DartEntityRenderer(EntityRendererManager rendererManager) {
+    public DartEntityRenderer(EntityRendererProvider.Context rendererManager) {
         super(rendererManager);
     }
 
     //We are going to be rendering a model, so the texture isn't needed.
     @Override
-    public ResourceLocation getEntityTexture(DartEntity entity) {
+    public ResourceLocation getTextureLocation(DartEntity entity) {
         return null;
     }
 
@@ -37,7 +37,7 @@ public class DartEntityRenderer extends EntityRenderer<DartEntity> {
      * This is our render method - where all the magic happens.
      */
     @Override
-    public void render(DartEntity entity, float entityYaw, float partialTicks, MatrixStack matrices, IRenderTypeBuffer buffer, int light) {
+    public void render(DartEntity entity, float entityYaw, float partialTicks, PoseStack matrices, MultiBufferSource buffer, int light) {
         /*
          * In the gun JSON file we can determine if we want the bullets to be visible
          * We can check it here with the isVisible method provided by the Gun Mod.
@@ -45,7 +45,7 @@ public class DartEntityRenderer extends EntityRenderer<DartEntity> {
          *
          * However, we also check if the ticks that the entity has existed for is less than or equal to 1, and then we can remove it.
          */
-        if(!entity.getProjectile().isVisible() || entity.ticksExisted <= 1) {
+        if(!entity.getProjectile().isVisible() || entity.tickCount <= 1) {
             return;
         }
 
@@ -62,12 +62,13 @@ public class DartEntityRenderer extends EntityRenderer<DartEntity> {
          * be using a TileEntityRenderer which, in turn they will use code similar to this.
          * For examples you can view vanilla classes such as CampfireTileEntityRenderer.
          */
-        matrices.push();
-        matrices.rotate(Vector3f.YP.rotationDegrees(180F));
-        matrices.rotate(Vector3f.YP.rotationDegrees(entityYaw));
-        matrices.rotate(Vector3f.XP.rotationDegrees(entity.rotationPitch));
+        matrices.pushPose();
+        matrices.mulPose(Vector3f.YP.rotationDegrees(180F));
+        matrices.mulPose(Vector3f.YP.rotationDegrees(entityYaw));
+        matrices.mulPose(Vector3f.XP.rotationDegrees(entity.getXRot() - 90));
 
-        Minecraft.getInstance().getItemRenderer().renderItem(entity.getItem(), ItemCameraTransforms.TransformType.NONE, light, OverlayTexture.NO_OVERLAY, matrices, buffer);
-        matrices.pop();
+        Minecraft.getInstance().getItemRenderer().renderStatic(entity.getItem(), ItemTransforms.TransformType.NONE, light, OverlayTexture.NO_OVERLAY, matrices, buffer, 0);
+        matrices.popPose();
     }
+
 }

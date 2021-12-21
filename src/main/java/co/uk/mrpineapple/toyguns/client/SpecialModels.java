@@ -2,12 +2,12 @@ package co.uk.mrpineapple.toyguns.client;
 
 import co.uk.mrpineapple.toyguns.core.ToyGuns;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.model.IBakedModel;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.client.model.ForgeModelBakery;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
@@ -30,7 +30,7 @@ public enum SpecialModels {
     private ResourceLocation modelLocation;
     private boolean specialModel;
     @OnlyIn(Dist.CLIENT)
-    private IBakedModel cachedModel;
+    private BakedModel cachedModel;
 
     SpecialModels(String modelName) {
         //Get the file path for the special modes, and set them to true (the are going to be special models)
@@ -45,9 +45,9 @@ public enum SpecialModels {
 
     //Get the item's model
     @OnlyIn(Dist.CLIENT)
-    public IBakedModel getModel() {
+    public BakedModel getModel() {
         if(this.cachedModel == null) {
-            IBakedModel model = Minecraft.getInstance().getModelManager().getModel(this.modelLocation);
+            BakedModel model = Minecraft.getInstance().getModelManager().getModel(this.modelLocation);
             if(model == Minecraft.getInstance().getModelManager().getMissingModel()) {
                 return model;
             } this.cachedModel = model;
@@ -60,7 +60,7 @@ public enum SpecialModels {
     public static void register(ModelRegistryEvent event) {
         for(SpecialModels model : values()) {
             if(model.specialModel) {
-                ModelLoader.addSpecialModel(model.modelLocation);
+                ForgeModelBakery.addSpecialModel(model.modelLocation);
             }
         }
     }

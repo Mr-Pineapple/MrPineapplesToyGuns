@@ -2,13 +2,13 @@ package co.uk.mrpineapple.toyguns.core.registry;
 
 import co.uk.mrpineapple.toyguns.common.entity.DartEntity;
 import co.uk.mrpineapple.toyguns.core.ToyGuns;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityClassification;
-import net.minecraft.entity.EntityType;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.BiFunction;
 
@@ -34,13 +34,12 @@ public class EntityRegistry {
      * All of the stuff in this method can be written each time we create a new projectile - but that isn't needed.
      * With this we can register things with much more ease.
      */
-    private static <T extends Entity> RegistryObject<EntityType<T>> registerBasic(String id, BiFunction<EntityType<T>, World, T> function) {
-        EntityType<T> type = EntityType.Builder.create(function::apply, EntityClassification.MISC)
-                .size(0.25F, 0.25F)
+    private static <T extends Entity> RegistryObject<EntityType<T>> registerBasic(String id, BiFunction<EntityType<T>, Level, T> function) {
+        EntityType<T> type = EntityType.Builder.of(function::apply, MobCategory.MISC)
+                .sized(0.25F, 0.25F)
                 .setTrackingRange(100)
                 .setUpdateInterval(1)
-                .disableSummoning()
-                .immuneToFire()
+                .fireImmune()
                 .setShouldReceiveVelocityUpdates(true)
                 .build(id);
         return ENTITY_REGISTRY.register(id, () -> type);

@@ -5,16 +5,16 @@ import co.uk.mrpineapple.toyguns.core.registry.ItemRegistry;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.entity.ProjectileEntity;
 import com.mrcrayfish.guns.item.GunItem;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
 
 /*
  * This class is for my dart projectile - of course you can just use normal ammunition, however, I've included this as it
@@ -28,11 +28,11 @@ import net.minecraft.world.World;
  * Author: Mr. Pineapple
  */
 public class DartEntity extends ProjectileEntity {
-    public DartEntity(EntityType<? extends ProjectileEntity> entityType, World world) {
+    public DartEntity(EntityType<? extends ProjectileEntity> entityType, Level world) {
         super(entityType, world);
     }
 
-    public DartEntity(EntityType<? extends ProjectileEntity> entityType, World world, LivingEntity shooter, ItemStack weapon, GunItem item, Gun modifiedGun) {
+    public DartEntity(EntityType<? extends ProjectileEntity> entityType, Level world, LivingEntity shooter, ItemStack weapon, GunItem item, Gun modifiedGun) {
         super(entityType, world, shooter, weapon, item, modifiedGun);
     }
 
@@ -42,9 +42,9 @@ public class DartEntity extends ProjectileEntity {
      * In this case, I have it call a local method called onHit
      */
     @Override
-    protected void onHitEntity(Entity entity, Vector3d hitVec, Vector3d startVec, Vector3d endVec, boolean headshot) {
+    protected void onHitEntity(Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot) {
         super.onHitEntity(entity, hitVec, startVec, endVec, headshot);
-        this.onHit(hitVec.getX(), hitVec.getY(), hitVec.getZ());
+        this.onHit(hitVec.x(), hitVec.y(), hitVec.z());
     }
 
     /*
@@ -56,7 +56,6 @@ public class DartEntity extends ProjectileEntity {
     protected void onHitBlock(BlockState state, BlockPos pos, Direction face, double x, double y, double z) {
         this.onHit(x, y, z);
     }
-
     /*
      * This is our method, because it is being called whenever the bullet hits something, I can then apply some logic to it.
      * In this case, I get the world and add an entity - a new instance of the dart. This means the player can pick up the darts
@@ -65,8 +64,8 @@ public class DartEntity extends ProjectileEntity {
      * If it is equal to 0, then the dart will not spawn as an item, for a true nerf experience :P
      */
     void onHit(double x, double y, double z) {
-        if(rand.nextInt(Config.COMMON.dartLossChance.get() - 1) >= 1) {
-            world.addEntity(new ItemEntity(world, x, y, z, new ItemStack(ItemRegistry.DART.get())));
+        if(random.nextInt(Config.COMMON.dartLossChance.get() - 1) >= 1) {
+            level.addFreshEntity(new ItemEntity(level, x, y, z, new ItemStack(ItemRegistry.DART.get())));
         }
     }
 }

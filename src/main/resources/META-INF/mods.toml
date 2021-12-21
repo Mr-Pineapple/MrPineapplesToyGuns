@@ -1,6 +1,6 @@
 #Stuff to load
 modLoader="javafml"
-loaderVersion="[32,)"
+loaderVersion="[39,)"
 license="GPL3"
 issueTrackerURL="https://github.com/Mr-Pineapple/MrPineapplesToyGuns/issues"
 
@@ -27,33 +27,27 @@ description='Mr. Pineapples Toy Gun Addon introduces toy guns to MrCrayfishs Gun
 [[dependencies.toyguns]]
     modId="forge"
     mandatory=true
-    versionRange="[32,)"
+    versionRange="[39,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.toyguns]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.3,1.17)"
+    versionRange="[1.18,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.toyguns]]
     modId="cgm"
     mandatory=true
-    versionRange="[1.0.0,)"
+    versionRange="[1.1.2,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.toyguns]]
-    modId="obfuscate"
+    modId="framework"
     mandatory=true
-    versionRange="[0.6.0,)"
+    versionRange="[0.2.2,)"
     ordering="NONE"
     side="BOTH"
-[[dependencies.toyguns]]
-    modId="controllable"
-    mandatory=false
-    versionRange="[0.10.3,)"
-    ordering="AFTER"
-    side="CLIENT"
 
 [modproperties.toyguns]
     catalogueItemIcon="minecraft:stripped_birch_wood"

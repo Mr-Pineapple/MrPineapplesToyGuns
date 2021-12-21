@@ -16,7 +16,7 @@ import org.lwjgl.glfw.GLFW;
 public class InputEvent {
     @SubscribeEvent
     public static void onKeyPressed(KeyInputEvent event) {
-        if(KeyBinds.KEY_UNJAM.isPressed() && event.getAction() == GLFW.GLFW_PRESS) {
+        if(KeyBinds.KEY_UNJAM.consumeClick() && event.getAction() == GLFW.GLFW_PRESS) {
             PacketHandler.getPlayChannel().sendToServer(new UnjamMessage());
         }
     }

@@ -1,28 +1,32 @@
 package co.uk.mrpineapple.toyguns.core.network.message;
 
 import co.uk.mrpineapple.toyguns.core.network.Handler;
-import com.mrcrayfish.guns.network.message.IMessage;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.network.PacketBuffer;
-import net.minecraftforge.fml.network.NetworkEvent;
+import com.mrcrayfish.framework.api.network.PlayMessage;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
 /**
  * Author: Mr. Pineapple
  */
-public class UnjamMessage implements IMessage {
+public class UnjamMessage extends PlayMessage<UnjamMessage> {
+
+    public UnjamMessage() {}
 
     @Override
-    public void encode(PacketBuffer buffer) {}
+    public void encode(UnjamMessage message, FriendlyByteBuf buffer) {}
 
     @Override
-    public void decode(PacketBuffer buffer) {}
+    public UnjamMessage decode(FriendlyByteBuf buffer) {
+        return new UnjamMessage();
+    }
 
     @Override
-    public void handle(Supplier<NetworkEvent.Context> supplier) {
+    public void handle(UnjamMessage message, Supplier<NetworkEvent.Context> supplier) {
         supplier.get().enqueueWork(() -> {
-            ServerPlayerEntity player = supplier.get().getSender();
+            ServerPlayer player = supplier.get().getSender();
             if(player != null && !player.isSpectator()) {
                 Handler.handleUnjam(player);
             }

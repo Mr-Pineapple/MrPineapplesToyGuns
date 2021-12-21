@@ -1,11 +1,11 @@
 package co.uk.mrpineapple.toyguns.core.registry;
 
 import co.uk.mrpineapple.toyguns.core.ToyGuns;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 /*
  * This class will register any sounds we want to add - in this case I am adding a shooting sound

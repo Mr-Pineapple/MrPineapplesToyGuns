@@ -5,9 +5,9 @@ import co.uk.mrpineapple.toyguns.core.Config;
 import co.uk.mrpineapple.toyguns.core.ToyGuns;
 import co.uk.mrpineapple.toyguns.core.registry.SoundRegistry;
 import com.mrcrayfish.guns.event.GunFireEvent.Pre;
-import net.minecraft.util.text.KeybindTextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.KeybindComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -46,10 +46,10 @@ public class ShootingEvent {
                 //Play sound
                 event.getPlayer().playSound(SoundRegistry.ITEM_TOY_GUN_RELOAD.get(), 1F, 1F);
                 //Set cooldown tracker for the stack
-                event.getPlayer().getCooldownTracker().setCooldown(event.getStack().getItem(), 60);
+                event.getPlayer().getCooldowns().addCooldown(event.getStack().getItem(), 60);
                 //Inform the player
                 if(Config.COMMON.showJamStatusMessage.get()) {
-                    event.getPlayer().sendStatusMessage(new TranslationTextComponent("info." + ToyGuns.ID + ".gun_jammed", (new KeybindTextComponent("key." + ToyGuns.ID + ".unjam_gun")).getString().toUpperCase(Locale.ENGLISH)).mergeStyle(TextFormatting.RED), true);
+                    event.getPlayer().displayClientMessage(new TranslatableComponent("info." + ToyGuns.ID + ".gun_jammed", (new KeybindComponent("key." + ToyGuns.ID + ".unjam_gun")).getString().toUpperCase(Locale.ENGLISH)).withStyle(ChatFormatting.RED), true);
                 }
                 //Cancel the event, ultimately, not firing the gun
                 event.setCanceled(true);

@@ -10,11 +10,12 @@ import co.uk.mrpineapple.toyguns.core.registry.ItemRegistry;
 import co.uk.mrpineapple.toyguns.core.registry.SoundRegistry;
 import com.mrcrayfish.guns.client.render.gun.ModelOverrides;
 import com.mrcrayfish.guns.common.ProjectileManager;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
+import net.minecraft.core.NonNullList;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -39,11 +40,11 @@ public class ToyGuns {
      * If you wanted, you could just add them to the Gun Mods tab.
      * We pass in our ID to this so we can name it in the lang file.
      */
-    public static final ItemGroup GROUP = new ItemGroup(ID) {
+    public static final CreativeModeTab GROUP = new CreativeModeTab(ID) {
         //Here we create the icon for the tab
         //If you wanted a normal item here then you can just return an ItemStack
         @Override
-        public ItemStack createIcon() {
+        public ItemStack makeIcon() {
             //Get the Item in a new ItemStack
             ItemStack stack = new ItemStack(ItemRegistry.TOY_GUN.get());
             //Here we add ammunition to the gun so it doesn't have the re-fill bar under the item
@@ -70,16 +71,13 @@ public class ToyGuns {
 
     //This is the common setup event
     void commonSetup(FMLCommonSetupEvent event) {
-        //Register our PacketHandler class here
-        PacketHandler.init();
         //Here is where we register the dart to the gun
+        PacketHandler.init();
         ProjectileManager.getInstance().registerFactory(ItemRegistry.DART.get(), ((world, livingEntity, itemStack, gunItem, gun) -> new DartEntity(EntityRegistry.DART.get(), world, livingEntity, itemStack, gunItem, gun)));
     }
 
     //This is the client setup event
     void clientSetup(FMLClientSetupEvent event) {
-        //Here we bind the renderer class to the entity - so it knows what to render for the entity.
-        RenderingRegistry.registerEntityRenderingHandler(EntityRegistry.DART.get(), DartEntityRenderer::new);
         //Register the revolver model
         ModelOverrides.register(ItemRegistry.TOY_REVOLVER.get(), new ToyRevolverModel());
         //Register our Keybinds

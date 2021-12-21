@@ -4,10 +4,10 @@ import co.uk.mrpineapple.toyguns.common.items.NerfGunItem;
 import co.uk.mrpineapple.toyguns.core.ToyGuns;
 import com.mrcrayfish.guns.item.AmmoItem;
 import com.mrcrayfish.guns.item.GunItem;
-import net.minecraft.item.Item;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 /*
  * In this class we will register all of our items (guns, bullets, attachments etc.)
@@ -45,5 +45,5 @@ public class ItemRegistry {
      * You don't need to add new ammunition as you can use the existing ones in the mod by adding them to the gun's JSON file
      * However, for my mod, I want to create my own dart.
      */
-    public static final RegistryObject<Item> DART = ITEM_REGISTRY.register("dart", () -> new AmmoItem(new Item.Properties().group(ToyGuns.GROUP)));
+    public static final RegistryObject<Item> DART = ITEM_REGISTRY.register("dart", () -> new AmmoItem(new Item.Properties().tab(ToyGuns.GROUP)));
 }
