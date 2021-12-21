@@ -65,7 +65,7 @@ public class DartEntityRenderer extends EntityRenderer<DartEntity> {
         matrices.pushPose();
         matrices.mulPose(Vector3f.YP.rotationDegrees(180F));
         matrices.mulPose(Vector3f.YP.rotationDegrees(entityYaw));
-        matrices.mulPose(Vector3f.XP.rotationDegrees(entity.getXRot() - 90));
+        matrices.mulPose(Vector3f.XP.rotationDegrees(entity.getXRot()));
 
         Minecraft.getInstance().getItemRenderer().renderStatic(entity.getItem(), ItemTransforms.TransformType.NONE, light, OverlayTexture.NO_OVERLAY, matrices, buffer, 0);
         matrices.popPose();
