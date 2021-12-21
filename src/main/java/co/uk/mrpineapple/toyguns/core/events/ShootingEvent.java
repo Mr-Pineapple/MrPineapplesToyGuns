@@ -4,10 +4,14 @@ import co.uk.mrpineapple.toyguns.common.items.NerfGunItem;
 import co.uk.mrpineapple.toyguns.core.Config;
 import co.uk.mrpineapple.toyguns.core.ToyGuns;
 import co.uk.mrpineapple.toyguns.core.registry.SoundRegistry;
+import com.mrcrayfish.guns.event.GunFireEvent;
 import com.mrcrayfish.guns.event.GunFireEvent.Pre;
+import com.mrcrayfish.guns.item.GunItem;
 import net.minecraft.ChatFormatting;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.KeybindComponent;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -25,6 +29,18 @@ import java.util.Random;
 @Mod.EventBusSubscriber(modid = ToyGuns.ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ShootingEvent {
     static final Random rand = new Random();
+
+    @SubscribeEvent
+    public static void shoot(GunFireEvent event) {
+        ItemStack stack = event.getStack();
+        if(stack.getItem() instanceof NerfGunItem) {
+            CompoundTag gunData = stack.getTag();
+            int ammoCount = gunData.getInt("AmmoCount");
+            System.out.println(ammoCount);
+
+        }
+    }
+
     /**
      * @param event the event. In this case, the Pre shoot event {@link com.mrcrayfish.guns.event.GunFireEvent.Pre} which is fired when a player is about to shoot a bullet
      */
