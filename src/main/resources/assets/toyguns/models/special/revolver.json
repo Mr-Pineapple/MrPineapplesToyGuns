@@ -800,11 +800,11 @@
 	],
 	"display": {
 		"thirdperson_righthand": {
-			"translation": [0, 6, -7]
+			"translation": [0, 0, 0]
 		},
 		"firstperson_righthand": {
-			"translation": [-3.5, 8, 0],
-			"scale": [0.8, 0.8, 0.8]
+			"translation": [0, 0, 0],
+			"scale": [1, 1, 1 ]
 		},
 		"ground": {
 			"translation": [0, 10, -4.5],
@@ -825,11 +825,13 @@
 		{
 			"name": "group",
 			"origin": [8.575, 4.625, 11.25],
+			"color": 0,
 			"children": [53, 54, 55, 56, 57]
 		},
 		{
 			"name": "group",
 			"origin": [8.575, 4.625, 11.25],
+			"color": 0,
 			"children": [58, 59, 60, 61, 62]
 		}
 	]

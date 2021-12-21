@@ -28,7 +28,6 @@ public class ToyRevolverModel implements IOverrideModel {
         //Wer're rendering the body part of the revolved, which, because it is static, we don't need to manipulate
         RenderUtil.renderModel(SpecialModels.REVOLVER.getModel(), transformType, null, stack, parent, matrices, renderBuffer, light, overlay);
 
-        //Make sure the player has it
         //Always push
         matrices.pushPose();
         //Here we're moving the model into position
