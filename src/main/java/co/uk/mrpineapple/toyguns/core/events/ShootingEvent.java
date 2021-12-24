@@ -6,7 +6,6 @@ import co.uk.mrpineapple.toyguns.core.ToyGuns;
 import co.uk.mrpineapple.toyguns.core.registry.SoundRegistry;
 import com.mrcrayfish.guns.event.GunFireEvent;
 import com.mrcrayfish.guns.event.GunFireEvent.Pre;
-import com.mrcrayfish.guns.item.GunItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.KeybindComponent;
@@ -36,7 +35,7 @@ public class ShootingEvent {
         if(stack.getItem() instanceof NerfGunItem) {
             CompoundTag gunData = stack.getTag();
             int ammoCount = gunData.getInt("AmmoCount");
-            System.out.println(ammoCount);
+//            System.out.println(ammoCount);
 
         }
     }

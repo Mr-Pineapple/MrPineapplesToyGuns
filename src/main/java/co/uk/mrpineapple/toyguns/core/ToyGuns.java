@@ -1,7 +1,6 @@
 package co.uk.mrpineapple.toyguns.core;
 
 import co.uk.mrpineapple.toyguns.client.KeyBinds;
-import co.uk.mrpineapple.toyguns.client.render.entity.DartEntityRenderer;
 import co.uk.mrpineapple.toyguns.client.render.gun.model.ToyRevolverModel;
 import co.uk.mrpineapple.toyguns.common.entity.DartEntity;
 import co.uk.mrpineapple.toyguns.core.network.PacketHandler;
@@ -10,10 +9,8 @@ import co.uk.mrpineapple.toyguns.core.registry.ItemRegistry;
 import co.uk.mrpineapple.toyguns.core.registry.SoundRegistry;
 import com.mrcrayfish.guns.client.render.gun.ModelOverrides;
 import com.mrcrayfish.guns.common.ProjectileManager;
-import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
