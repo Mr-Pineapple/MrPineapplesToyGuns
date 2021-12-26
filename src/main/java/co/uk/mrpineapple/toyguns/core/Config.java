@@ -21,6 +21,7 @@ public class Config {
      */
     public static class Common {
         //Initialise our value
+        public final ForgeConfigSpec.BooleanValue dartLoss;
         public final ForgeConfigSpec.IntValue dartLossChance;
         public final ForgeConfigSpec.BooleanValue gunJams;
         public final ForgeConfigSpec.IntValue dartJamChance;
@@ -36,6 +37,7 @@ public class Config {
                  * Then in the case of an integer we need to set the range.
                  * This takes in the path (what it will be called). The default value. The minimum value. Then the max value.
                  */
+                this.dartLoss = builder.comment("Should some darts have a chance to be lost when shot? if set to false the chance will be ignored").define("enableDartLoss", true);
                 this.dartLossChance = builder.comment("The chance of a dart being lost when shot is 1/this number").defineInRange("dartLossMinimum", 20, 0, Integer.MAX_VALUE);
                 this.gunJams = builder.comment("Should Toy Guns jam? if set to false the chance will be ignored").define("enableGunJamming", true);
                 this.dartJamChance = builder.comment("The chance of a dart being lost is 1/this number").defineInRange("dartJamMinimum", 100, 1, Integer.MAX_VALUE);

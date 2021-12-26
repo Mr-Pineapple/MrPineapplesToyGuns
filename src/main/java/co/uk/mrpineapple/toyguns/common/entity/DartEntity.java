@@ -64,7 +64,7 @@ public class DartEntity extends ProjectileEntity {
      * If it is equal to 0, then the dart will not spawn as an item, for a true nerf experience :P
      */
     void onHit(double x, double y, double z) {
-        if(random.nextInt(Config.COMMON.dartLossChance.get() - 1) >= 1) {
+        if(random.nextInt(Config.COMMON.dartLossChance.get() - 1) >= 1 && Config.COMMON.dartLoss.get()) {
             level.addFreshEntity(new ItemEntity(level, x, y, z, new ItemStack(ItemRegistry.DART.get())));
         }
     }
