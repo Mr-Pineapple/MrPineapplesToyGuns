@@ -1,6 +1,6 @@
 #Stuff to load
 modLoader="javafml"
-loaderVersion="[39,)"
+loaderVersion="[42,)"
 license="GPL3"
 issueTrackerURL="https://github.com/Mr-Pineapple/MrPineapplesToyGuns/issues"
 
@@ -15,25 +15,16 @@ authors="Mr. Pineapple"
 credits="MrCrayfish"
 description='Mr. Pineapples Toy Gun Addon introduces toy guns to MrCrayfishs Gun Mod'
 
-#Dependencies are an integral part of this
-#We need to add forge and minecraft to run the game
-#However, we also need to require the Gun mod, as well as Obfuscate
-#We need the Gun Mod so we can register guns and other related stuff
-#We need Obfuscate because it is a required dependency of the Gun Mod
-
-#The fields marked with mandatory need to be present when loading the game
-#They are present in the IDE as we added them to our build.gradle file
-#Something like controllable isn't needed, however, we still add it as the mod supports that and adds features around it.
 [[dependencies.toyguns]]
     modId="forge"
     mandatory=true
-    versionRange="[39,)"
+    versionRange="[42,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.toyguns]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18,)"
+    versionRange="[1.19.1,1.20)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.toyguns]]
