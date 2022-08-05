@@ -6,9 +6,7 @@ import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.client.model.ForgeModelBakery;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.client.event.ModelEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
 /*
@@ -54,16 +52,19 @@ public enum SpecialModels {
         } return this.cachedModel;
     }
 
-    //Register a new model to that item
-    @SubscribeEvent
-    @OnlyIn(Dist.CLIENT)
-    public static void register(ModelRegistryEvent event) {
+    public static void registerAdditional(ModelEvent.RegisterAdditional event) {
         for(SpecialModels model : values()) {
             if(model.specialModel) {
-                ForgeModelBakery.addSpecialModel(model.modelLocation);
+                event.register(model.modelLocation);
             }
         }
     }
 
-    //TODO finish comment
+    public static void clearCache() {
+        for(SpecialModels model : values()) {
+            if(model.specialModel) {
+                model.cachedModel = null;
+            }
+        }
+    }
 }

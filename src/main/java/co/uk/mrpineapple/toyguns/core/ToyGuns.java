@@ -71,6 +71,7 @@ public class ToyGuns {
         //Register our Keybinds
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
            bus.addListener(KeyBinds::register);
+            bus.addListener(SpecialModels::registerAdditional);
         });
     }
 
