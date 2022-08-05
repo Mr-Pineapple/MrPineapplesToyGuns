@@ -81,13 +81,13 @@ repositories {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.19.1-42.0.2'
-    implementation fg.deobf('curse.maven:framework-549225:3559396')
-    implementation fg.deobf('curse.maven:controllable-317269:3546297')
-    implementation fg.deobf('curse.maven:mrcrayfishs-gun-mod-289479:3562019')
-    implementation fg.deobf('curse.maven:configured-457570:3559398')
-    implementation fg.deobf('curse.maven:catalogue-459701:3559402')
-    compileOnly fg.deobf("mezz.jei:jei-1.18:9.0.0.40:api")
-    runtimeOnly fg.deobf("mezz.jei:jei-1.18:9.0.0.40")
+    implementation fg.deobf('curse.maven:framework-549225:3873800')
+    implementation fg.deobf('curse.maven:controllable-317269:3873303')
+    implementation fg.deobf('curse.maven:mrcrayfishs-gun-mod-289479:3874034')
+    implementation fg.deobf('curse.maven:configured-457570:3871521')
+    implementation fg.deobf('curse.maven:catalogue-459701:3871526')
+    compileOnly fg.deobf("mezz.jei:jei-1.19-forge-api:11.0.0.211")
+    runtimeOnly fg.deobf("mezz.jei:jei-1.19-forge:11.0.0.211")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
