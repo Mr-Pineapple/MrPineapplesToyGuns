@@ -4,7 +4,7 @@ import co.uk.mrpineapple.toyguns.client.KeyBinds;
 import co.uk.mrpineapple.toyguns.core.ToyGuns;
 import co.uk.mrpineapple.toyguns.core.network.PacketHandler;
 import co.uk.mrpineapple.toyguns.core.network.message.UnjamMessage;
-import net.minecraftforge.client.event.InputEvent.KeyInputEvent;
+import net.minecraftforge.client.event.InputEvent.Key;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.lwjgl.glfw.GLFW;
@@ -15,7 +15,7 @@ import org.lwjgl.glfw.GLFW;
 @Mod.EventBusSubscriber(modid = ToyGuns.ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class InputEvent {
     @SubscribeEvent
-    public static void onKeyPressed(KeyInputEvent event) {
+    public static void onKeyPressed(Key event) {
         if(KeyBinds.KEY_UNJAM.consumeClick() && event.getAction() == GLFW.GLFW_PRESS) {
             PacketHandler.getPlayChannel().sendToServer(new UnjamMessage());
         }

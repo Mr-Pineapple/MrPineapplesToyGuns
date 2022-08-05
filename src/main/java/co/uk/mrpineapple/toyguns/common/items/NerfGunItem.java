@@ -4,8 +4,6 @@ import co.uk.mrpineapple.toyguns.core.ToyGuns;
 import com.mrcrayfish.guns.item.GunItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.KeybindComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -30,7 +28,7 @@ public class NerfGunItem extends GunItem {
         //Check if the gun is jammed from the isJammed NBT property
         if(stack.getTag().getBoolean("isJammed")) {
             //Add a tooltip on how to unjam the gun from the keybind
-            tooltip.add(new TranslatableComponent("info." + ToyGuns.ID + ".gun_jammed", (new KeybindComponent("key." + ToyGuns.ID + ".unjam_gun")).getString().toUpperCase(Locale.ENGLISH)).withStyle(ChatFormatting.RED));
+            tooltip.add(Component.translatable("info." + ToyGuns.ID + ".gun_jammed", (Component.keybind("key." + ToyGuns.ID + ".unjam_gun")).getString().toUpperCase(Locale.ENGLISH)).withStyle(ChatFormatting.RED));
         }
     }
 }

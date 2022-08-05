@@ -1,6 +1,7 @@
 package co.uk.mrpineapple.toyguns.core;
 
 import co.uk.mrpineapple.toyguns.client.KeyBinds;
+import co.uk.mrpineapple.toyguns.client.SpecialModels;
 import co.uk.mrpineapple.toyguns.client.render.gun.model.ToyRevolverModel;
 import co.uk.mrpineapple.toyguns.common.entity.DartEntity;
 import co.uk.mrpineapple.toyguns.core.network.PacketHandler;
@@ -11,7 +12,9 @@ import com.mrcrayfish.guns.client.render.gun.ModelOverrides;
 import com.mrcrayfish.guns.common.ProjectileManager;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -64,6 +67,11 @@ public class ToyGuns {
         //Call the setup methods from below and add them to the bus
         bus.addListener(this::commonSetup);
         bus.addListener(this::clientSetup);
+
+        //Register our Keybinds
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+           bus.addListener(KeyBinds::register);
+        });
     }
 
     //This is the common setup event
@@ -77,7 +85,5 @@ public class ToyGuns {
     void clientSetup(FMLClientSetupEvent event) {
         //Register the revolver model
         ModelOverrides.register(ItemRegistry.TOY_REVOLVER.get(), new ToyRevolverModel());
-        //Register our Keybinds
-        KeyBinds.register();
     }
 }

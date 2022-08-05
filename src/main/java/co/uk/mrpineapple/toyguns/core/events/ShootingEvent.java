@@ -8,8 +8,7 @@ import com.mrcrayfish.guns.event.GunFireEvent;
 import com.mrcrayfish.guns.event.GunFireEvent.Pre;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.KeybindComponent;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -59,12 +58,12 @@ public class ShootingEvent {
             //Check if the gun is jammed from the NBT data
             if(event.getStack().getTag().getBoolean("isJammed")) {
                 //Play sound
-                event.getPlayer().playSound(SoundRegistry.ITEM_TOY_GUN_RELOAD.get(), 1F, 1F);
+                event.getEntity().playSound(SoundRegistry.ITEM_TOY_GUN_RELOAD.get(), 1F, 1F);
                 //Set cooldown tracker for the stack
-                event.getPlayer().getCooldowns().addCooldown(event.getStack().getItem(), 60);
+                event.getEntity().getCooldowns().addCooldown(event.getStack().getItem(), 60);
                 //Inform the player
                 if(Config.COMMON.showJamStatusMessage.get()) {
-                    event.getPlayer().displayClientMessage(new TranslatableComponent("info." + ToyGuns.ID + ".gun_jammed", (new KeybindComponent("key." + ToyGuns.ID + ".unjam_gun")).getString().toUpperCase(Locale.ENGLISH)).withStyle(ChatFormatting.RED), true);
+                    event.getEntity().displayClientMessage(Component.translatable("info." + ToyGuns.ID + ".gun_jammed", (Component.keybind("key." + ToyGuns.ID + ".unjam_gun")).getString().toUpperCase(Locale.ENGLISH)).withStyle(ChatFormatting.RED), true);
                 }
                 //Cancel the event, ultimately, not firing the gun
                 event.setCanceled(true);
