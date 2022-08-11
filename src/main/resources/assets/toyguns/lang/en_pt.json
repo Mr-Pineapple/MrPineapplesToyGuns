@@ -8,5 +8,9 @@
   "itemGroup.toyguns": "Toy Gun Arrr'senal",
 
   "subtitle.toyguns.toy_fire": "Toy Shootin'",
-  "subtitle.toyguns.toy_reload": "Reload O' Toy"
+  "subtitle.toyguns.toy_reload": "Reload O' Toy",
+
+  "info.toyguns.gun_jammed": "Hit %s at sea to un-stuck ",
+  "key.categories.toyguns": "Rubber Shooters",
+  "key.toyguns.unjam_gun": "Unstick"
 }
