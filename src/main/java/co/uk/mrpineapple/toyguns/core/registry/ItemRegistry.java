@@ -40,6 +40,7 @@ public class ItemRegistry {
      * we still need to register it in the same way.
      */
     public static final RegistryObject<GunItem> TOY_REVOLVER = ITEM_REGISTRY.register("revolver", NerfGunItem::new);
+    public static final RegistryObject<GunItem> TRI_SHOT = ITEM_REGISTRY.register("tri_shot", NerfGunItem::new);
 
     /*
      * You don't need to add new ammunition as you can use the existing ones in the mod by adding them to the gun's JSON file

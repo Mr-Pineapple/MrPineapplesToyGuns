@@ -1,0 +1,51 @@
+{
+  "general": {
+    "rate": 3,
+    "gripType": "cgm:two_handed",
+    "maxAmmo": 12,
+    "reloadAmount": 4,
+    "recoilAngle": 3.0,
+    "recoilKick": 0.5,
+    "recoilAdsReduction": 0.4,
+    "projectileAmount": 3,
+    "alwaysSpread": true,
+    "spread": 20.0
+  },
+  "projectile": {
+    "item": "toyguns:dart",
+    "visible": true,
+    "damage": 0.5,
+    "size": 0.2,
+    "speed": 1.5,
+    "life": 200,
+    "gravity": true
+  },
+  "sounds": {
+    "fire": "toyguns:item.toy_gun.fire",
+    "reload": "toyguns:item.toy_gun.reload",
+    "cock": "toyguns:item.toy_gun.reload",
+    "silencedFire": "toyguns:item.toy_gun.fire"
+  },
+  "modules": {
+    "zoom": {
+      "yOffset": 5.1,
+      "zOffset": 3.2,
+      "fovModifier": 0.7
+    },
+    "attachments": {
+      "scope": {
+        "yOffset": 4.4,
+        "zOffset": 4.0
+      },
+      "barrel": {
+        "yOffset": 3.6506,
+        "zOffset": -3.8,
+        "scale": 0.5
+      },
+      "stock": {
+        "yOffset": 3.6506,
+        "zOffset": 8.4
+      }
+    }
+  }
+}
