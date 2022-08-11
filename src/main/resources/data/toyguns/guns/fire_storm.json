@@ -1,0 +1,27 @@
+{
+  "general": {
+    "auto": true,
+    "rate": 2,
+    "gripType": "cgm:mini_gun",
+    "maxAmmo": 48,
+    "reloadAmount": 8,
+    "recoilAngle": 0.5,
+    "alwaysSpread": true,
+    "spread": 7.0
+  },
+  "projectile": {
+    "item": "toyguns:dart",
+    "visible": true,
+    "damage": 0.5,
+    "size": 0.2,
+    "speed": 1.5,
+    "life": 200,
+    "gravity": true
+  },
+  "sounds": {
+    "fire": "toyguns:item.toy_gun.fire",
+    "reload": "toyguns:item.toy_gun.reload",
+    "cock": "toyguns:item.toy_gun.reload",
+    "silencedFire": "toyguns:item.toy_gun.fire"
+  }
+}
