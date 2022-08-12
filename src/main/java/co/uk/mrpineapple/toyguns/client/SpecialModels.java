@@ -21,8 +21,8 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 @EventBusSubscriber(modid = ToyGuns.ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
 public enum SpecialModels {
     //The values in this class are stored here so we can call upon them.
-    REVOLVER("revolver"),
-    REVOLVER_CHAMBER("revolver_chamber");
+    REVOLVER("gun/multi/revolver"),
+    REVOLVER_CHAMBER("gun/multi/revolver_chamber");
 
     //Variables
     private ResourceLocation modelLocation;
