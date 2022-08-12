@@ -1,0 +1,20 @@
+{
+  "type": "cgm:workbench",
+  "result": {
+    "item": "toyguns:one_shot"
+  },
+  "materials": [
+    {
+      "item": "minecraft:iron_ingot",
+      "count": 5
+    },
+    {
+      "item": "minecraft:blue_dye",
+      "count": 2
+    },
+    {
+      "item": "minecraft:orange_dye",
+      "count": 1
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "type": "cgm:workbench",
+  "result": {
+    "item": "toyguns:fire_storm"
+  },
+  "materials": [
+    {
+      "item": "minecraft:iron_ingot",
+      "count": 18
+    },
+    {
+      "item": "minecraft:blue_dye",
+      "count": 4
+    },
+    {
+      "item": "minecraft:orange_dye",
+      "count": 8
+    }
+  ]
+}

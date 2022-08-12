@@ -1,0 +1,20 @@
+{
+  "type": "cgm:workbench",
+  "result": {
+    "item": "toyguns:tri_shot"
+  },
+  "materials": [
+    {
+      "item": "minecraft:iron_ingot",
+      "count": 10
+    },
+    {
+      "item": "minecraft:blue_dye",
+      "count": 2
+    },
+    {
+      "item": "minecraft:orange_dye",
+      "count": 1
+    }
+  ]
+}
