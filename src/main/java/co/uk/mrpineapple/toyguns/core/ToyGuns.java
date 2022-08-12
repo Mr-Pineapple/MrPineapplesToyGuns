@@ -9,8 +9,11 @@ import co.uk.mrpineapple.toyguns.core.registry.EntityRegistry;
 import co.uk.mrpineapple.toyguns.core.registry.ItemRegistry;
 import co.uk.mrpineapple.toyguns.core.registry.SoundRegistry;
 import com.mrcrayfish.guns.client.render.gun.ModelOverrides;
+import com.mrcrayfish.guns.client.render.gun.model.SimpleModel;
 import com.mrcrayfish.guns.common.ProjectileManager;
+import com.mrcrayfish.guns.init.ModItems;
 import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -21,6 +24,8 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+
+import java.util.Objects;
 
 /*
  * This is our main class in here we will make sure everything is registered correctly and the mod runs
@@ -86,5 +91,12 @@ public class ToyGuns {
     void clientSetup(FMLClientSetupEvent event) {
         //Register the revolver model
         ModelOverrides.register(ItemRegistry.TOY_REVOLVER.get(), new ToyRevolverModel());
+
+        ModelOverrides.register(ItemRegistry.TOY_GUN.get(), new SimpleModel(SpecialModels.HAND_GUN::getModel));
+        ModelOverrides.register(ItemRegistry.DEFENDER.get(), new SimpleModel(SpecialModels.DEFENDER::getModel));
+        ModelOverrides.register(ItemRegistry.TRI_SHOT.get(), new SimpleModel(SpecialModels.TRI_SHOT::getModel));
+        ModelOverrides.register(ItemRegistry.ONE_SHOT.get(), new SimpleModel(SpecialModels.ONE_SHOT::getModel));
+        ModelOverrides.register(ItemRegistry.FIRE_STORM.get(), new SimpleModel(SpecialModels.FIRE_STORM::getModel));
+
     }
 }
