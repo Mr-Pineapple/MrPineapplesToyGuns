@@ -2,12 +2,13 @@ package co.uk.mrpineapple.toyguns.client.screen;
 
 import co.uk.mrpineapple.toyguns.common.blockentity.ToyWorkbenchBlockEntity;
 import co.uk.mrpineapple.toyguns.common.container.ToyWorkbenchContainer;
+import co.uk.mrpineapple.toyguns.core.network.PacketHandler;
+import co.uk.mrpineapple.toyguns.core.network.message.CraftMessage;
 import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.mrcrayfish.configured.network.PacketHandler;
 import com.mrcrayfish.guns.client.screen.CheckBox;
 import com.mrcrayfish.guns.client.util.RenderUtil;
 import com.mrcrayfish.guns.common.NetworkGunManager;
@@ -189,7 +190,7 @@ public class ToyWorkbenchScreen extends AbstractContainerScreen<ToyWorkbenchCont
             int index = this.currentTab.getCurrentIndex();
             WorkbenchRecipe recipe = this.currentTab.getRecipes().get(index);
             ResourceLocation registryName = recipe.getId();
-            PacketHandler.getPlayChannel().sendToServer(new MessageCraft(registryName, this.workbench.getBlockPos()));
+            PacketHandler.getPlayChannel().sendToServer(new CraftMessage(registryName, this.workbench.getBlockPos()));
         }));
         this.btnCraft.active = false;
         this.checkBoxMaterials = this.addRenderableWidget(new CheckBox(this.leftPos + 172, this.topPos + 51, Component.translatable("gui.cgm.workbench.show_remaining")));
