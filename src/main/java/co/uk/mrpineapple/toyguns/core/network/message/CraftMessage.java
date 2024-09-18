@@ -1,14 +1,12 @@
 package co.uk.mrpineapple.toyguns.core.network.message;
 
-import co.uk.mrpineapple.toyguns.core.network.Handler;
-import com.mrcrayfish.framework.api.network.PlayMessage;
+import com.mrcrayfish.framework.api.network.MessageContext;
+import com.mrcrayfish.framework.api.network.message.PlayMessage;
+import com.mrcrayfish.guns.common.network.ServerPlayHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.network.NetworkEvent.Context;
-
-import java.util.function.Supplier;
 
 public class CraftMessage extends PlayMessage<CraftMessage> {
     private ResourceLocation id;
@@ -33,13 +31,13 @@ public class CraftMessage extends PlayMessage<CraftMessage> {
     }
 
     @Override
-    public void handle(CraftMessage craftMessage, Supplier<Context> supplier) {
-        ((Context) supplier.get()).enqueueWork(() -> {
-            ServerPlayer player = ((Context) supplier.get()).getSender();
+    public void handle(CraftMessage craftMessage, MessageContext context) {
+        context.execute(() -> {
+            ServerPlayer player= context.getPlayer();
             if(player != null) {
-                Handler.handleCraft(player, craftMessage.id, craftMessage.pos);
+                ServerPlayHandler.handleCraft(player, craftMessage.id, craftMessage.pos);
             }
         });
-        ((Context) supplier.get()).setPacketHandled(true);
+        context.setHandled(true);
     }
 }
