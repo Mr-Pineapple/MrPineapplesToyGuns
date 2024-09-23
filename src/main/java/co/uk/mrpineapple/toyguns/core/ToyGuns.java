@@ -62,12 +62,12 @@ public class ToyGuns {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         bus.register(this);
         //Register the Deferred Register from our Registry classes
-        BlockRegistry.REGISTER.register(bus);
-        ContainerRegistry.REGISTER.register(bus);
+//        BlockRegistry.REGISTER.register(bus);
+//        ContainerRegistry.REGISTER.register(bus);
         EntityRegistry.ENTITY_REGISTRY.register(bus);
         ItemRegistry.ITEM_REGISTRY.register(bus);
         SoundRegistry.SOUND_REGISTRY.register(bus);
-        TileEntityRegistry.REGISTER.register(bus);
+//        TileEntityRegistry.REGISTER.register(bus);
         //Call the setup methods from below and add them to the bus
         bus.addListener(this::commonSetup);
         bus.addListener(this::clientSetup);
@@ -91,7 +91,7 @@ public class ToyGuns {
         //Register the revolver model
         ModelOverrides.register(ItemRegistry.TOY_REVOLVER.get(), new ToyRevolverModel());
 
-        MenuScreens.register(ContainerRegistry.WORKBENCH.get(), ToyWorkbenchScreen::new);
+//        MenuScreens.register(ContainerRegistry.WORKBENCH.get(), ToyWorkbenchScreen::new);
 
         ModelOverrides.register(ItemRegistry.TOY_GUN.get(), new SimpleModel(SpecialModels.HAND_GUN::getModel));
         ModelOverrides.register(ItemRegistry.DEFENDER.get(), new SimpleModel(SpecialModels.DEFENDER::getModel));
