@@ -25,6 +25,17 @@ import java.util.Locale;
 @Mixin(ServerPlayHandler.class)
 public abstract class ServerPlayHandlerMixin {
 
+    @Inject(at = @At("HEAD"), method = "handleShoot", cancellable = true, remap = false)
+    private static void handleShootHead(C2SMessageShoot message, ServerPlayer player, CallbackInfo ci) {
+        ItemStack stackInHand = player.getItemInHand(InteractionHand.MAIN_HAND);
+        CompoundTag tag = stackInHand.getOrCreateTag();
+        int ammoCount = tag.getInt("AmmoCount");
+        if(stackInHand.is(ItemRegistry.TRI_SHOT.get()) && ammoCount <= 2) {
+            player.displayClientMessage(Component.translatable("info." + ToyGuns.ID + ".gun_limited_ammo").withStyle(ChatFormatting.YELLOW), true);
+            ci.cancel();
+        }
+    }
+
     @Inject(at = @At("RETURN"), method = "handleShoot", cancellable = true, remap = false)
     private static void handleShootReturn(C2SMessageShoot message, ServerPlayer player, CallbackInfo ci) {
         System.out.println("Started Return Injection");
