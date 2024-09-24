@@ -1,15 +1,18 @@
 buildscript {
     repositories {
         maven { url = 'https://files.minecraftforge.net/maven' }
+        maven { url = 'https://repo.spongepowered.org/maven' }
         jcenter()
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'maven-publish'
+apply plugin: 'org.spongepowered.mixin'
 
 version = '0.3.3-1.19.2'
 group = 'co.uk.mrpineapple'
@@ -17,6 +20,11 @@ archivesBaseName = 'toyguns'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
+mixin {
+    add sourceSets.main, "toyguns.refmap.json"
+
+    config "toyguns.mixin.json"
+}
 
 minecraft {
     mappings channel: 'official', version: '1.19.2'
@@ -27,6 +35,8 @@ minecraft {
 			property "mixin.env.disableRefMap", "true"
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'debug'
+            arg "-mixin.config=toyguns.mixin.json"
+            args '--username', "MrPineapple"
 
             mods {
                 toyguns {
@@ -81,6 +91,7 @@ dependencies {
     implementation fg.deobf('curse.maven:mrcrayfishs-gun-mod-289479:4718583')
     implementation fg.deobf('curse.maven:configured-457570:4462837')
     implementation fg.deobf('curse.maven:catalogue-459701:4171024')
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
 jar {
@@ -92,7 +103,8 @@ jar {
             "Implementation-Title": "Mr Pineapples Toy Guns Addon",
             "Implementation-Version": project.version,
             "Implementation-Vendor" :"Mr. Pineapple",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+            "MixinConfigs": "toyguns.mixin.json"
 		])
     }
 }
