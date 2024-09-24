@@ -1,8 +1,6 @@
 {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/mr-pineapples-toy-guns",
     "promos": {
-        "1.19.2-latest": "0.3.2",
-        "1.19.3-latest": "0.3.2",
-        "1.19.4-latest": "0.3.2"
+        "1.19.2-latest": "0.3.3",
     }
 }
