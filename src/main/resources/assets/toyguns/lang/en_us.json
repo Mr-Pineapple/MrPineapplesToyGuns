@@ -12,6 +12,7 @@
   "subtitle.toyguns.toy_reload": "Toy Gun Reload",
 
   "info.toyguns.gun_jammed": "Press %s in-game to un-jam ",
+  "info.toyguns.gun_limited_ammo": "Tri-Shot must have at least 3 darts",
   "key.categories.toyguns": "Mr Pineapple's Toy Guns",
   "key.toyguns.unjam_gun": "Unjam"
 }
