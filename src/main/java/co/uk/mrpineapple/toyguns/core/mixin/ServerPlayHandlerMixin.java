@@ -38,14 +38,11 @@ public abstract class ServerPlayHandlerMixin {
 
     @Inject(at = @At("RETURN"), method = "handleShoot", cancellable = true, remap = false)
     private static void handleShootReturn(C2SMessageShoot message, ServerPlayer player, CallbackInfo ci) {
-        System.out.println("Started Return Injection");
         ItemStack stackInHand = player.getItemInHand(InteractionHand.MAIN_HAND);
         CompoundTag tag = stackInHand.getOrCreateTag();
         int ammoCount = tag.getInt("AmmoCount");
         if(stackInHand.is(ItemRegistry.TRI_SHOT.get())) {
-            System.out.println("Holding Tri-Shot (RETURN)");
             tag.putInt("AmmoCount", Math.max(0, tag.getInt("AmmoCount") - 2));
         }
-        System.out.println("Finished Return Injection");
     }
 }
